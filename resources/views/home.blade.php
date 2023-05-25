@@ -28,15 +28,17 @@
                         <td>{{ $train->arrival_station }}</td>
                         <td>{{ $train->arrival_time }}</td>
                         <td>{{ $train->number_carriages }}</td>
-                        @if ($train->in_time)
-                            <td class="bg-warning">Ritardo</td>
-                        @else
-                            <td class="bg-success">In Orario</td>
-                        @endif
-                        @if ($train->deleted)
-                            <td class="bg-danger">Cancellato</td>
+
+                        @if (!$train->deleted)
+                            @if ($train->in_time)
+                                <td class="bg-warning">Ritardo</td>
+                            @else
+                                <td class="bg-success">In Orario</td>
+                            @endif
+                        <td></td>
                         @else
                             <td></td>
+                            <td class="bg-danger">Cancellato</td>
                         @endif
 
                     </tr>
